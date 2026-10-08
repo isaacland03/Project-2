@@ -22,15 +22,13 @@ def LoadData(input_geometry):
         print("Input must be a csv file. Please input a csv file with file extension .csv included in the end of the input file name.")
         sys.exit()
     # open the file
-    with open(input_geometry, 'r', encoding='utf-8-sig') as f:
+    with open(input_geometry, 'r') as f:
         # Iterate through all lines
         for line in f:
             # otherwise, split the line
             splitline = line.split();
             commaline = line.split(',')
-            if commaline[0].strip() == '':
-                continue
-            elif(commaline[0].lower().strip()=='nodes'):
+            if(commaline[0].lower().strip()=='nodes'):
                 barflag = False
                 nodeflag = True
                 continue
