@@ -49,6 +49,9 @@ def SumOfForcesInLocalX(node, local_x_bar):
             )
 
     unknown_force = -sum_known_forces
+
+    local_x_bar.SetAxialLoad(unknown_force)
+    local_x_bar.is_computed = True
     return unknown_force
 
 # Compute unknown force in bar due to sum of the 
@@ -82,6 +85,8 @@ def SumOfForcesInLocalY(node, unknown_bars):
         sys.exit("Cannot solve node: the two unknown bars are collinear.")
 
     unknown_force = -sum_known_forces / other_bar_sine
+    other_bar.SetAxialLoad(unknown_force)
+    other_bar.is_computed = True
 
     return unknown_force
     
